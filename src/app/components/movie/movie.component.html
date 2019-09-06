@@ -1,1 +1,45 @@
-<p>pelicula works!</p>
+<div *ngIf="movie" class="container main-container animated fadeIn fast">
+  <h1>{{ movie.original_title }}</h1>
+  <div class="row">
+    <div class="col-md-5">
+      <img
+        *ngIf="movie.poster_path; else noImage"
+        [src]="movie | movieImage: true"
+        class="img-thumbnail img-fluid"
+        [alt]="movie.original_title"
+      />
+    </div>
+    <div class="col-md-7">
+      <h3>Sinopsis:</h3>
+      <hr />
+      <p *ngIf="movie.overview; else noInfo">
+        {{ movie.overview }}
+      </p>
+      <ng-container *ngIf="movie.tagline">
+        <h4>Celeb Quote:</h4>
+        <p class="font-italic">"{{ movie.tagline }}"</p>
+      </ng-container>
+
+      <br />
+      <p>
+        Average Vote:
+        <span class="badge badge-primary">{{ movie.vote_average }}/10</span>
+      </p>
+      <button
+        class="pointer"
+        [routerLink]="['/' + backTo, searchInput]"
+        class="btn btn-outline-danger"
+      >
+        Back
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #noImage>
+  No Image for this Movie
+</ng-template>
+
+<ng-template #noInfo>
+  No Info for this Movie
+</ng-template>

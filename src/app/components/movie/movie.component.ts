@@ -1,4 +1,6 @@
+import {MoviesService} from './../../services/movies.service';
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-movie',
@@ -6,7 +8,22 @@ import {Component, OnInit} from '@angular/core';
   styles: [],
 })
 export class MovieComponent implements OnInit {
-  constructor() {}
+  movie: any;
+  backTo: string = '';
+  searchInput: string = '';
 
-  ngOnInit() {}
+  constructor(
+    private movieService: MoviesService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.backTo = params['page'];
+      if (params['searchInput']) this.searchInput = params['searchInput'];
+      this.movieService
+        .getMovie(params['id'])
+        .subscribe(movie => (this.movie = movie));
+    });
+  }
 }

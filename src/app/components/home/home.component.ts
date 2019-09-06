@@ -7,9 +7,17 @@ import {Component, OnInit} from '@angular/core';
   styles: [],
 })
 export class HomeComponent implements OnInit {
-  constructor(private moviesService: MoviesService) {
-    this.moviesService.getBoard().subscribe(data => console.log(data));
-  }
+  board: any;
+  populars: any;
+  kidsPopulars: any;
 
-  ngOnInit() {}
+  constructor(private moviesService: MoviesService) {}
+
+  ngOnInit() {
+    this.moviesService.getBoard().subscribe(data => (this.board = data));
+    this.moviesService.getPopulars().subscribe(data => (this.populars = data));
+    this.moviesService
+      .getKidsPopulars()
+      .subscribe(data => (this.kidsPopulars = data));
+  }
 }

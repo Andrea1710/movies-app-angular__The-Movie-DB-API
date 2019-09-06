@@ -1,75 +1,20 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Movies App</h1>
-    <p class="lead">Your favorite Movies in an App!</p>
+<div
+  class="jumbotron jumbotron-fluid"
+  style="background-image: url(assets/img/jumbotron.jpg); background-size: cover; height: 450px"
+>
+  <div class="container main">
+    <h1 class="display-4 text-white">Movies App</h1>
+    <p class="lead text-white">Your favorite Movies in an App!</p>
   </div>
 </div>
 
 <div class="container">
   <br />
 
-  <h1>Board</h1>
-  <hr />
-
-  <div class="row">
-    <div class="col-md-6">
-      <div class="row">
-        <div
-          class="col-md-12 div-pic-1"
-          [ngStyle]="{
-            'background-image':
-              'url(http://image.tmdb.org/t/p/w500/unlBvDip1Dv3aMFIzEUIUXH3h3p.jpg)'
-          }"
-        ></div>
-      </div>
-
-      <div class="row">
-        <div
-          class="col-sm-6 div-pic-2"
-          [ngStyle]="{
-            'background-image':
-              'url(http://image.tmdb.org/t/p/w500/unlBvDip1Dv3aMFIzEUIUXH3h3p.jpg)'
-          }"
-        ></div>
-
-        <div
-          class="col-sm-6 div-pic-2"
-          [ngStyle]="{
-            'background-image':
-              'url(http://image.tmdb.org/t/p/w500/unlBvDip1Dv3aMFIzEUIUXH3h3p.jpg)'
-          }"
-        ></div>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="row">
-        <div
-          class="col-sm-6 div-pic-2"
-          [ngStyle]="{
-            'background-image':
-              'url(http://image.tmdb.org/t/p/w500/unlBvDip1Dv3aMFIzEUIUXH3h3p.jpg)'
-          }"
-        ></div>
-
-        <div
-          class="col-sm-6 div-pic-2"
-          [ngStyle]="{
-            'background-image':
-              'url(http://image.tmdb.org/t/p/w500/unlBvDip1Dv3aMFIzEUIUXH3h3p.jpg)'
-          }"
-        ></div>
-      </div>
-
-      <div class="row">
-        <div
-          class="col-md-12 div-pic-1"
-          [ngStyle]="{
-            'background-image':
-              'url(http://image.tmdb.org/t/p/w500/unlBvDip1Dv3aMFIzEUIUXH3h3p.jpg)'
-          }"
-        ></div>
-      </div>
-    </div>
-  </div>
+  <app-gallery [movies]="board" title="Movies"></app-gallery>
+  <app-gallery [movies]="populars" title="Popular Movies"></app-gallery>
+  <app-gallery
+    [movies]="kidsPopulars"
+    title="Populars Kids Movies"
+  ></app-gallery>
 </div>
